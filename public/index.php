@@ -6,5 +6,9 @@ require '../vendor/autoload.php';
 
 session_start();
 
-Router::run();
+try {
+    Router::run();
+} catch (Exception $e) {
+    dd($e->getMessage());
+}
 

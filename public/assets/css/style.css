@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+:root {
+    --green-ligth: #BBF2E8;
+    --green: #17A67D;
+    --white: #F2F2F2;
+    --gray: #BFBFBF;
+    --black: #0D0D0D;
+    --red: #F22727;
+    --font: sans-serif;
+}

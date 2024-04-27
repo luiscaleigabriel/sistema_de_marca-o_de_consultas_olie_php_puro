@@ -10,7 +10,6 @@ class Router
         $router = $routerRegistered->get(); 
 
         $controller = new Controller;
-
-        dd($router);
+        $controller->execute($router);
     }
 }
