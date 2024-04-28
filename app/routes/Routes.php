@@ -9,11 +9,11 @@ class Routes
         return [
             'get' => [
                 '/' => 'HomeController@index',
-                '/user/[0-9]+' => 'UserController@show',
+                '/user/edit/[0-9]+' => 'UserController@edit',
                 '/register' => 'RegisterController@index'
                 ],
             'post' => [
-                
+                '/feedback/paciente' => 'FeedBackController@store'
                 ]
         ];
     }

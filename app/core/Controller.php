@@ -27,7 +27,10 @@ class Controller
             throw new Exception("O método {$action} não foi encontrado no controller {$controllerInstance}.");
         }
 
-        call_user_func_array([$controller, $action], []);
+        $params = new ControllerParams;
+        $params = $params->get($router);
+
+        call_user_func_array([$controller, $action], $params);
 
     }
 }

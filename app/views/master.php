@@ -8,8 +8,7 @@
     <meta name="keywords" content="marcação de consultas, online, sitema, clíniica" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/all.min.css" />
-    <link rel="shortcut icon" href="assets/images/undraw_doctor_kw5l.png" type="image/x-icon">
-    <?= $this->section('style') ?>
+    <link rel="shortcut icon" href="assets/images/undraw_doctor_kw5l.png" type="image/x-icon" />
     <title>CLínica Girassol</title>
 </head>
 <body>
@@ -25,18 +24,14 @@
         <?= $this->section('content') ?>
     </div>
 
+    <!-- footer -->
+    <footer class="footer">
+        <?php $this->insert('sections/footer') ?>
+    </footer>
+
+    <!-- script js -->
+    <script src="assets/js/script.js"></script>
     
 
 </body>
 </html>
-
-<?php
-/*
-<!-- footer -->
-<footer class="footer">
-    <?php $this->insert('sections/footer') ?>
-</footer>
-
-<!-- script js -->
-<script src="assets/js/script.js"></script>
-<?= $this->section('js') ?> */ ?>

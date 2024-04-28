@@ -1,5 +1,13 @@
 @charset "utf-8";
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis
+------------------------------------------------*/
 :root {
     --green-ligth: #BBF2E8;
     --green: #17A67D;
@@ -8,4 +16,348 @@
     --black: #0D0D0D;
     --red: #F22727;
     --font: sans-serif;
+}
+
+/* Estilo Geral
+------------------------------------------------*/
+body {
+    font-size: 62.5%;
+    font-family: var(--font);
+    scroll-behavior: smooth;
+}
+
+h1, h2 , h3 {
+    line-height: 2rem;
+}
+
+p, a {
+    color: inherit;
+    font-size: 1rem;
+    text-decoration: none;
+    line-height: 1.5rem;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 1300px;
+    width: 100%;
+    padding: 1rem 4%;
+    margin: 0 auto;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: var(--green);
+    font-family: fantasy;
+}
+
+.btn {
+    display: inline-block;
+    padding: .2rem 1rem;
+    border: 2px solid var(--green);
+    transition: .5s ease;
+}
+
+.btn-consult {
+    border-radius: 20px;
+}
+
+.btn-consult:hover {
+    color: var(--white);
+    background-color: var(--green);
+}
+
+.face--btns > .btn.btn-consult,
+.about--btn > .btn.btn-consult {
+    border-radius: 5px;
+}
+
+.btn.btn-see {
+    color: var(--white);
+    border-radius: 5px;
+    background-color: var(--green);
+}
+
+.btn.btn-see:hover {
+    transform: scale(1.04);
+    margin-right: .5rem;
+}
+
+/* Header
+------------------------------------------------*/
+.header-left, .menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    gap: .4rem;
+    margin-left: 4rem; 
+}
+
+.menu__item > a {
+    position: relative;
+    display: block;
+    color: var(--black);
+    padding: .2rem 1rem;
+    transform: .5s ease;
+}
+
+.menu__item > a:hover {
+    color: var(--green);
+}
+
+.menu__item > a::before {
+    position: absolute;
+    bottom: 0;
+
+    content: '';
+    width: 0%;
+    height: 2px;
+    border-radius: 1rem;
+    transition: .5s ease;
+    background-color: var(--black);
+}
+
+.menu__item > a:hover:before {
+    width: 100%;
+    background-color: var(--green);
+}
+
+/* face
+------------------------------------------------*/
+.face--left {
+    flex: 50%;
+}
+
+.face--left > h2 {
+    margin-bottom: 2.5rem;
+}
+
+.face--left > p {
+    color: var(--green);
+    margin-bottom: 2rem;
+}
+
+.face--right {
+    flex: 50%;
+}
+
+/* about
+------------------------------------------------*/
+.about {
+    padding: 3rem 0;
+}
+.about-right,
+.about-left {
+    flex: 50%;
+}
+.about__title {
+    color: var(--gray);
+    text-align: center;
+}
+
+.about-right > p {
+    color: var(--green);
+    margin: 2rem 0;
+}
+
+.about--btn {
+    text-align: center;
+}
+
+/* services especialistas
+------------------------------------------------*/
+.services--content {
+    max-width: 1300px;
+    margin: 4rem auto;
+    padding: 2rem 20%;
+
+    display: flex;
+    gap: 5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.services__title,
+.clientes__title {
+    color: var(--green);
+    text-align: center;
+}
+
+.especialista {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 0 2rem var(--green-ligth);
+}
+
+.especialista > img {
+    border-radius: 50%;
+}
+
+.especialista > p {
+    position: absolute;
+    width: 100%;
+    bottom: -3.5rem;
+    z-index: 100;
+
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.especialista > p > span:first-child {
+    color: #0e684e;
+    font-weight: bold;
+}
+
+.especialista > p > span:last-child {
+    color: var(--green);
+    font-weight: bold;
+}
+
+/* clientes
+------------------------------------------------*/
+.clientes {
+    padding: 2rem 0;
+}
+
+.clientes--content {
+    max-width: 1300px;
+    width: 100%;
+    padding: 0 8%;
+    margin: 2rem auto;
+
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.clientes__box {
+    padding: 5px 1rem;
+    border-radius: 20px;
+    background-color: var(--green-ligth);
+    border: 2px solid var(--green);
+}
+
+.clientes__box > .clientes__name {
+    color: #0e684e;
+    text-align: center;
+}
+
+.clientes--content > .clientes--btn {
+    grid-column: 1 / 3;
+    text-align: center;
+}
+
+/* feedback
+------------------------------------------------*/
+.feedback--left {
+    flex: 60%;
+    height: 25rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 2px solid var(--green-ligth);
+    box-shadow: 0 0 2rem var(--green-ligth);
+}
+
+.form__title {
+    color: var(--green);
+    text-align: center;
+}
+
+.feedback--right {
+    flex: 40%;
+    border-radius: 1rem;
+    padding: 2rem 4rem;
+    background-color: var(--green-ligth);
+}
+
+.form-group > input,
+.form-group > textarea {
+    width: 100%;
+    outline: none;
+    padding: 0 1rem;
+    margin: .6rem 0;
+    border-radius: .5rem;
+    border: 2px solid var(--green);
+}
+
+.form-group > input:focus,
+.form-group > textarea:focus {
+    transform: scale(1.04);
+    box-shadow: 0 0 1rem var(--green-ligth);
+}
+
+.form-group > input {
+    height: 2rem;
+}
+
+button {
+    cursor: pointer;
+    width: 100%;
+    height: 2rem;
+}
+
+/* footer
+------------------------------------------------*/
+.footer {
+    padding: 1rem 0;
+    background-color: var(--green-ligth);
+}
+
+.footer h3 {
+    color: var(--green);
+}
+
+.footer--content.wrapper {
+    justify-content: start;
+}
+
+.footer__box > .footer__icons > a > i {
+    font-size: 1.4rem;
+}
+
+.footer--b {
+    width: 100%;
+    padding: 1rem 4%;
+}
+
+.footer--b div {
+    border-top: 2px solid var(--green);
+}
+
+.footer--b p {
+    color: var(--black);
+    padding: 1rem 0;
+    text-align: center;
 }
