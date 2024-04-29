@@ -20,4 +20,9 @@ class Request
         return $_POST;
     }
 
+    public static function to(string $to) 
+    {
+        header("Location: $to");
+    }
+
 }

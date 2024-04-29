@@ -13,7 +13,7 @@ class Routes
                 '/register' => 'RegisterController@index'
                 ],
             'post' => [
-                '/feedback/paciente' => 'FeedBackController@store'
+                '/feedback/paciente' => 'FeedBackController@create'
                 ]
         ];
     }

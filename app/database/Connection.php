@@ -11,7 +11,7 @@ class Connection
     public static function connect() 
     {
         if(!self::$conn) {
-            self::$conn = new PDO('mysql:host-localhost;dbname=clinica', 'root', '', [
+            self::$conn = new PDO('mysql:host=localhost;dbname=clinica', 'root', '', [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
             ]);
         }

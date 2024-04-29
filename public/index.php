@@ -1,6 +1,7 @@
 <?php
 
 use app\core\Router;
+use app\helpers\Session;
 
 require '../vendor/autoload.php';
 
@@ -12,3 +13,4 @@ try {
     dd($e->getMessage());
 }
 
+Session::flashRemove();

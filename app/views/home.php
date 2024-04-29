@@ -87,40 +87,41 @@
     </div>
 </section>
 
-<section class="clientes">
+<section id="clientes" class="clientes">
+    <?php
+
+        use app\helpers\Session;
+
+        if(Session::has('__flash')): ?>
+            <?php if(Session::flashHas('success')): ?>
+                <div class="success">
+                    <?= Session::flashMessage('success') ?>
+                </div>
+            <?php endif; ?>
+            <?php if(Session::flashHas('error')): ?>
+                <div class="error">
+                    <?= Session::flashMessage('error') ?>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    
     <h2 class="clientes__title">Oque nossos pacientes dizem?</h2>
     <div class="clientes--content">
-        <div class="clientes__box">
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, placeat libero quia natus perferendis perspiciatis rem sequi unde. Unde perferendis assumenda numquam nisi iste fuga qui autem amet modi. Exercitationem.
-            </p>
-            <p class="clientes__name">Robert Fox</p>
-        </div>
-        <div class="clientes__box">
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, placeat libero quia natus perferendis perspiciatis rem sequi unde. Unde perferendis assumenda numquam nisi iste fuga qui autem amet modi. Exercitationem.
-            </p>
-            <p class="clientes__name">Robert Fox</p>
-        </div>
-        <div class="clientes__box">
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, placeat libero quia natus perferendis perspiciatis rem sequi unde. Unde perferendis assumenda numquam nisi iste fuga qui autem amet modi. Exercitationem.
-            </p>
-            <p class="clientes__name">Robert Fox</p>
-        </div>
-        <div class="clientes__box">
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, placeat libero quia natus perferendis perspiciatis rem sequi unde. Unde perferendis assumenda numquam nisi iste fuga qui autem amet modi. Exercitationem.
-            </p>
-            <p class="clientes__name">Robert Fox</p>
-        </div>
+        <?php foreach($feedbacks as $feedback): ?>
+            <div class="clientes__box">
+                <p>
+                    <?= $feedback->mensagem ?>
+                </p>
+                <p class="clientes__name"><?= $feedback->nome ?></p>
+            </div>
+        <?php endforeach; ?>
         <div class="clientes--btn">
             <a href="#" class="btn btn-consult">Ver mais</a>
         </div>
     </div>
 </section>
 
-<section class="feedback">
+<section id="feedback" class="feedback">
     <div class="feedback--content wrapper">
         <div class="feedback--left">
             <img src="assets/images/patty-brito-Y-3Dt0us7e0-unsplash.jpg" alt="feedback" />
@@ -129,13 +130,13 @@
             <form action="/feedback/paciente" method="POST">
                 <h3 class="form__title">FEEDBACK</h3>
                 <div class="form-group">
-                    <input type="text" name="name" id="name" placeholder="Nome" />
+                    <input type="text" name="nome" id="nome" placeholder="Nome" required />
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" id="email" placeholder="Email" />
+                    <input type="email" name="email" id="email" placeholder="Email" required />
                 </div>
                 <div class="form-group">
-                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Mensagem"></textarea>
+                    <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Mensagem" required ></textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-see" type="submit">Enviar</button>
