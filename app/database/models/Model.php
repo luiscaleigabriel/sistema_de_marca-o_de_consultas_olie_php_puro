@@ -60,7 +60,7 @@ abstract class Model
             $connection = Connection::connect();
             $query = $connection->query($sql);
 
-            return $query->fetchObject(get_called_class());
+            return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
         } catch (PDOException $e) {
             dd($e->getMessage());
         }

@@ -17,6 +17,12 @@
         </ul>
     </div>
     <div class="header-right">
-        <a href="#" class="btn btn-consult">Consulta</a>
+        <a href="/consult" class="btn btn-consult">Consulta</a>
     </div>
+    <a href="/" class="logoM">CGL</a>
+    <button onclick="openClose()" id="toggle">
+        <span class="row"></span>
+        <span class="row"></span>
+        <span class="row"></span>
+    </button>
 </div>

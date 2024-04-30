@@ -1,5 +1,10 @@
 <?= $this->layout('master') ?>
 
+<?php
+    use app\helpers\Session;
+    use app\helpers\Str;
+?>
+
 <section class="face">
     <div class="face--content wrapper">
         <div class="face--left">
@@ -13,8 +18,8 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque accusantium, officiis ratione dolores inventore cumque cum quasi ad qui quo rerum debitis unde nemo sint harum iste nesciunt doloribus.
             </p>
             <div class="face--btns">
-                <a href="" class="btn btn-see">Marcar consulta agora</a>
-                <a href="" class="btn btn-consult">Ver localização</a>
+                <a href="/consult" class="btn btn-see">Marcar consulta agora</a>
+                <a href="#" class="btn btn-consult">Ver localização</a>
             </div>
         </div>
         <div class="face--right">
@@ -41,7 +46,7 @@
 
 <section id="services" class="services">
     <h2 class="services__title">Nossos especialistas</h2>
-    <div class="services--content">
+    <div class="services--content wrapper">
         <div class="especialista">
             <img src="assets/images/jeremy-alford-O13B7suRG4A-unsplash.jpg" alt="especialista" />
             <p>
@@ -88,33 +93,33 @@
 </section>
 
 <section id="clientes" class="clientes">
-    <?php
-
-        use app\helpers\Session;
-
-        if(Session::has('__flash')): ?>
-            <?php if(Session::flashHas('success')): ?>
-                <div class="success">
-                    <?= Session::flashMessage('success') ?>
-                </div>
-            <?php endif; ?>
-            <?php if(Session::flashHas('error')): ?>
-                <div class="error">
-                    <?= Session::flashMessage('error') ?>
-                </div>
-            <?php endif; ?>
+    <?php if(Session::has('__flash')): ?>
+        <?php if(Session::flashHas('success')): ?>
+            <div class="success">
+                <?= Session::flashMessage('success') ?>
+            </div>
         <?php endif; ?>
+        <?php if(Session::flashHas('error')): ?>
+            <div class="error">
+                <?= Session::flashMessage('error') ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
     
     <h2 class="clientes__title">Oque nossos pacientes dizem?</h2>
     <div class="clientes--content">
-        <?php foreach($feedbacks as $feedback): ?>
-            <div class="clientes__box">
-                <p>
-                    <?= $feedback->mensagem ?>
-                </p>
-                <p class="clientes__name"><?= $feedback->nome ?></p>
-            </div>
-        <?php endforeach; ?>
+        <?php if(count($feedbacks) > 0): ?>
+            <?php foreach($feedbacks as $feedback): ?>
+                <div class="clientes__box">
+                    <p>
+                        <?= Str::str($feedback->mensagem, 280) ?>
+                    </p>
+                    <p class="clientes__name"><?= $feedback->nome ?></p>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <h3>Nenhum feedback encontrado</h3>
+        <?php endif; ?>
         <div class="clientes--btn">
             <a href="#" class="btn btn-consult">Ver mais</a>
         </div>

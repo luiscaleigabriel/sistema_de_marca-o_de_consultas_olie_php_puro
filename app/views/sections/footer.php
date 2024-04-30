@@ -14,6 +14,9 @@
             <h3>Informações</h3>
             <ul>
                 <li>
+                    <a href="/login">Login</a>
+                </li>
+                <li>
                     <a href="#about">Sobre</a>
                 </li>
                 <li>

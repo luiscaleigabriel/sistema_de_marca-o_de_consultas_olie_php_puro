@@ -10,10 +10,13 @@ class Routes
             'get' => [
                 '/' => 'HomeController@index',
                 '/user/edit/[0-9]+' => 'UserController@edit',
-                '/register' => 'RegisterController@index'
+                '/consult' => 'ConsultController@index',
+                '/register' => 'RegisterController@index',
+                '/login' => 'LoginController@index'
                 ],
             'post' => [
-                '/feedback/paciente' => 'FeedBackController@create'
+                '/feedback/paciente' => 'FeedBackController@create',
+                '/consult' => 'ConsultController@store',
                 ]
         ];
     }

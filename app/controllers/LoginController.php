@@ -4,10 +4,10 @@ namespace app\controllers;
 
 use app\helpers\View;
 
-class NotFoundController 
+class LoginController 
 {
     public function index() 
     {
-        View::render('404');
+        View::render('dashboard/login');
     }
 }
