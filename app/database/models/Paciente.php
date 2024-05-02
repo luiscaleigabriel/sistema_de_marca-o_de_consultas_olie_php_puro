@@ -5,11 +5,11 @@ namespace app\database\models;
 class Paciente extends Model
 {
     protected string $table = 'paciente';
-    private readonly int $id;
-    private readonly string $nome;
-    private readonly string $endereco;
-    private readonly string $sexo;
-    private readonly string $datanascimento	;
-    private readonly string $telefone;
-    private readonly string $email;
+    public readonly int $id;
+    public readonly string $nome;
+    public readonly string $endereco;
+    public readonly string $sexo;
+    public readonly string $datanascimento	;
+    public readonly string $telefone;
+    public readonly string $email;
 }

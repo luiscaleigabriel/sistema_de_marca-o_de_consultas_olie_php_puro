@@ -5,10 +5,10 @@ namespace app\database\models;
 class Marcacao extends Model
 {
     protected string $table = 'marcacao';
-    private readonly int $id;
-    private readonly string $datamarcacao;
-    private readonly string $atoclinico;
-    private readonly string $tipoconsulta;
-    private readonly int $idpaciente;
-    private readonly int $idmedico;
+    public readonly int $id;
+    public readonly string $datamarcacao;
+    public readonly string $atoclinico;
+    public readonly string $tipoconsulta;
+    public readonly int $idpaciente;
+    public readonly int $idmedico;
 }

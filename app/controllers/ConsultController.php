@@ -4,7 +4,9 @@ namespace app\controllers;
 
 use app\database\models\Marcacao;
 use app\database\models\Paciente;
+use app\helpers\Email;
 use app\helpers\Request;
+use app\helpers\Session;
 use app\helpers\View;
 
 class ConsultController 
@@ -24,13 +26,20 @@ class ConsultController
             'telefone' => Request::input('telefone'),
             'email' => Request::input('email')
         ];
-        
-        dd($dadosDoPaciente);
 
         $idmedico = rand(1, 6);
 
         $paciente = new Paciente;
-        $paciente->create($dadosDoPaciente);
+        $createdP = $paciente->create($dadosDoPaciente);
+
+        $paciente = $paciente->fetchAll();
+
+        foreach($paciente as $paciente) {
+            if($paciente->email == $dadosDoPaciente['email']) {
+                $paciente = $paciente;
+                break;
+            }
+        }
 
         $idpaciente = $paciente->id;
 
@@ -43,7 +52,34 @@ class ConsultController
         ];
 
         $marcação = new Marcacao;
-        $marcação->create($dadosDaMarcacao);
+        $createdM = $marcação->create($dadosDaMarcacao);
+
+        if($createdP && $createdM) {
+            $data = [
+                'nome' => Request::input('nome'),
+                'datamarcacao' => Request::input('datamarcacao')
+            ];
+            $email = new Email;
+            $send = $email->from('clinicagirassol@gmail.com', 'Clínica Girrassol')
+            ->to($dadosDoPaciente['email'], $dadosDoPaciente['nome'])
+            ->message('')
+            ->template('email',[
+                'name' => $data['nome'],
+                'date' => $data['datamarcacao']
+            ])
+            ->subject('')
+            ->send();
+    
+            if($send) {
+                Session::flash('success', 'Consulta marcada com sucesso! Verifique o seu email! Obrigado!');
+            }else {
+                Session::flash('error', 'Ocorreu um erro verifique a sua conexão a internet! ou tente mais tarde');
+            }
+        }else {
+            Session::flash('error', 'Ocorreu um erro verifique a sua conexão a internet! ou tente mais tarde');
+        }
+
+        Request::to('/consult');
         
     }
 }

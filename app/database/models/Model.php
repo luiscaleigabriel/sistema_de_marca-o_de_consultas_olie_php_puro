@@ -40,7 +40,7 @@ abstract class Model
     {
         try {
             $sql = "select {$this->fields} from {$this->table} order by desc where {$field} = :{$field}";
-            
+
             $connection = Connection::connect();
             $prepare = $connection->prepare($sql);
 

@@ -1,6 +1,21 @@
 <?= $this->layout('master') ?>
+<?php
+    use app\helpers\Session;
+?>
 
 <section class="consult">
+    <?php if(Session::has('__flash')): ?>
+        <?php if(Session::flashHas('success')): ?>
+            <div class="success">
+                <?= Session::flashMessage('success') ?>
+            </div>
+        <?php endif; ?>
+        <?php if(Session::flashHas('error')): ?>
+            <div class="error">
+                <?= Session::flashMessage('error') ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
     <div class="consult--content">
         <form action="" method="post">
             <h2 class="form__title">Formulário de Consulta</h2>
