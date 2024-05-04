@@ -12,13 +12,14 @@ class Routes
                 '/user/edit/[0-9]+' => 'UserController@edit',
                 '/consult' => 'ConsultController@index',
                 '/contact' => 'ContactController@index',
-                '/register' => 'RegisterController@index',
-                '/login' => 'LoginController@index'
+                '/login' => 'LoginController@index',
+                '/dash' => 'DashboardController@index'
                 ],
             'post' => [
                 '/feedback/paciente' => 'FeedBackController@create',
                 '/consult' => 'ConsultController@store',
                 '/contact' => 'ContactController@store',
+                '/login' => 'LoginController@store'
                 ]
         ];
     }

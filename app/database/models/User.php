@@ -5,10 +5,8 @@ namespace app\database\models;
 class User extends Model
 {
     protected string $table = 'usuario';
-    private readonly int $id;
-    private readonly string $nome;
-    private readonly string $email;
-    private readonly string $senha;
-    private readonly ?string $imagem;
-    private readonly string $admin;
+    public readonly int $id;
+    public readonly string $nome;
+    public readonly string $email;
+    public readonly string $senha;
 }

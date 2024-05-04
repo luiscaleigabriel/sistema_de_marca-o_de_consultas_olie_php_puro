@@ -32,7 +32,7 @@ abstract class Model
 
             return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
         } catch (PDOException $e) {
-            dd($e->getMessage());
+            $e->getMessage();
         }
     }
 
@@ -48,7 +48,7 @@ abstract class Model
 
             return $prepare->fetchObject(get_called_class());
         } catch (PDOException $e) {
-            dd($e->getMessage());
+            $e->getMessage();
         }
     }
 
@@ -62,9 +62,24 @@ abstract class Model
 
             return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
         } catch (PDOException $e) {
-            dd($e->getMessage());
+            $e->getMessage();
         }
     }
+
+    public function where(string $field, string $value, string $fields = '*') 
+    {
+        try {
+            $conn = Connection::connect();
+
+            $query = $conn->prepare("select {$fields} from {$this->table} where {$field} = :{$field}");
+
+            $query->execute([$field => $value]);
+
+            return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    } 
 
     public function create(array $data) 
     {
@@ -79,7 +94,7 @@ abstract class Model
             return $prepare->execute($data);
 
         } catch (PDOException $e) {
-            dd($e->getMessage());
+            $e->getMessage();
         }
     }
 
@@ -93,7 +108,7 @@ abstract class Model
 
             return $prepare->execute([$field => $value]);
         } catch (PDOException $e) {
-            dd($e->getMessage());
+            $e->getMessage();
         }
     }
 }
