@@ -25,11 +25,6 @@
             <div class="content">
                 <?= $this->section('content') ?>
             </div>
-
-            <!-- footer -->
-            <footer class="footer">
-                <?php $this->insert('dashboard/partials/footer') ?>
-            </footer>
         </div>
     </div>
     

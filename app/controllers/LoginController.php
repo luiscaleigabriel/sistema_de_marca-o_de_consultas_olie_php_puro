@@ -22,19 +22,30 @@ class LoginController
             'senha' => strip_tags(Request::input('senha'))
         ];
 
-        $user = new User;
-        $user = $user->where('email', $data['email']);
+        if(!empty($data['email']) && !empty($data['senha'])) {
+            $user = new User;
+            $user = $user->where('email', $data['email']);
 
-        if(!$user) {
-            Session::flash('error', 'Usuário ou senha inválidos');
+            if(!$user) {
+                Session::flash('error', 'Usuário ou senha inválidos');
+                Request::to('/login');
+            }
+
+            if(!password_verify($data['senha'], $user[0]->senha)) {
+                Session::flash('error', 'Usuário ou senha inválidos');
+                Request::to('/login');
+            }else {
+                Auth::loged($user[0]);
+            }
+        }else {
+            Session::flash('error', 'Preencha o campo emaiel/senha');
             Request::to('/login');
         }
 
-        if(!password_verify($data['email'], $user[0]->senha)) {
-            Session::flash('error', 'Usuário ou senha inválidos');
-            Request::to('/login');
-        }
+    }
 
-        Auth::loged($user[0]);
+    public function logout() 
+    {
+        Auth::logout();
     }
 }

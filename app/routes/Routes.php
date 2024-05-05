@@ -13,7 +13,10 @@ class Routes
                 '/consult' => 'ConsultController@index',
                 '/contact' => 'ContactController@index',
                 '/login' => 'LoginController@index',
-                '/dash' => 'DashboardController@index'
+                '/logout' => 'LoginController@logout',
+                '/dash' => 'DashboardController@index',
+                '/consultlist' => 'ConsultController@show',
+                '/consultlist/[0-9]+/delete' => 'ConsultController@delete',
                 ],
             'post' => [
                 '/feedback/paciente' => 'FeedBackController@create',

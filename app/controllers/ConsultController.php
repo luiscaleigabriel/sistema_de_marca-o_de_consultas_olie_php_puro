@@ -93,4 +93,23 @@ class ConsultController
         Request::to('/consult');
         
     }
+
+    public function show() 
+    {
+        $marcacao = new Marcacao;
+        $marcacao = $marcacao->fetchAll();
+
+        $paciente = new Paciente;
+        $paciente = $paciente->fetchAll();
+
+        View::render('dashboard/consultlist', [
+            'marcacoes' => $marcacao,
+            'paciente' => $paciente
+        ]);
+    }
+
+    public function delete(int $id) 
+    {
+        dd($id);
+    }
 }
