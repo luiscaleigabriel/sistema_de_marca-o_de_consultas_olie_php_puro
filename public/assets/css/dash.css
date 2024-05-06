@@ -57,6 +57,25 @@ a, p {
     text-decoration: none;
 }
 
+.success,
+.error {
+    margin: 2rem 0;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 1rem 4%;
+    color: var(--white);
+}
+
+.success{
+    background-color: var(--green);
+}
+
+.error {
+    background-color: var(--red);
+}
+
+
 /* navbar
 ------------------------------------------------*/
 .navbar {
@@ -215,6 +234,7 @@ div.content-l.active .nav--list__item a i{
 
 .table {
     width: 100%;
+    border-collapse: collapse;
 }
 
 table > thead > tr > th {
@@ -225,10 +245,67 @@ table > thead > tr > th {
 }
 
 table > tbody > tr:nth-child(2n) {
-    background-color: #ccc;
+    background-color: #cccccc70;
 }
 
 table > tbody > tr > td {
     padding: .4rem;
     text-align: center;
+}
+
+.add {
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.btn {
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    background-color: var(--green);
+}
+
+.btn:hover {
+    letter-spacing: 2px;
+}
+
+/* fomulários */
+form {
+    margin: 2rem;
+}
+
+.form-group {
+    color: var(--green);
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0 10px ;
+    height: 1.8rem;
+    margin-top: 1rem;
+    transition: .5s ease;
+    border: 2px solid var(--green);
+}
+
+.form-group input:focus {
+    outline: none;
+    transform: scale(1.01);
+    box-shadow:  0 0 1rem var(--green-ligth);
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    background-color: var(--green);
+}
+
+button:hover {
+    letter-spacing: 2px;
 }

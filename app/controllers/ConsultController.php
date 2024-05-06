@@ -110,6 +110,26 @@ class ConsultController
 
     public function delete(int $id) 
     {
-        dd($id);
+        $id = $id;
+        $marcacao = new Marcacao;
+        $marcacao = $marcacao->where('id', $id);
+
+        $idpaciente = $marcacao[0]->idpaciente;
+
+        unset($marcacao);
+
+        $paciente = new Paciente;
+        $pacienteDeleteded = $paciente->delete('id', $idpaciente);
+
+        $marcacao = new Marcacao;
+        $marcacaoDeleteded = $marcacao->delete('id', $id);
+
+        if($pacienteDeleteded && $marcacaoDeleteded) {
+            Session::flash('success', 'Consulta excluída com sucesso!');
+            Request::to('/consultlist');
+        }else {
+            Session::flash('error', 'Falha ao excluir!');
+            Request::to('/consultlist');
+        }
     }
 }

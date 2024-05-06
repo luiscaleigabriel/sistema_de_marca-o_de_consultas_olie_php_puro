@@ -15,7 +15,7 @@
             <a href="/consultlist"><i class="fa fa-list"></i> <div class="">Lista de Consultas</div></a>
         </li>
         <li class="nav--list__item">
-            <a href="/users"><i class="fa fa-users"></i> <div class="">Lista de Médicos</div></a>
+            <a href="/doctors"><i class="fa fa-users"></i> <div class="">Lista de Médicos</div></a>
         </li>
         <li class="nav--list__item">
             <a href="/users"><i class="fa fa-users"></i> <div class="">Lista de usuários</div></a>

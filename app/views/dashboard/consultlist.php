@@ -1,13 +1,29 @@
 <?= $this->layout('dashboard/master') ?>
 
-<?php $this->insert('dashboard/partials/header') ?>
+<?php
 
+use app\helpers\Session;
+
+$this->insert('dashboard/partials/header') ?>
+
+<?php if(Session::has('__flash')): ?>
+    <?php if(Session::flashHas('success')): ?>
+        <div class="success">
+            <?= Session::flashMessage('success') ?>
+        </div>
+    <?php endif; ?>
+    <?php if(Session::flashHas('error')): ?>
+        <div class="error">
+            <?= Session::flashMessage('error') ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
 <section class="list--content">
     <?php if(count($marcacoes) > 0): ?>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Nome do paciente</th>
+                    <th>Nome</th>
                     <th>Endereço</th>
                     <th>Sexo</th>
                     <th>Data de Nascimento</th>
@@ -16,7 +32,7 @@
                     <th>Data da consulta</th>
                     <th>Ato clínico</th>
                     <th>Tipo de consulta</th>
-                    <th>Opções</th>
+                    <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>
