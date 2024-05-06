@@ -22,20 +22,31 @@ class UserController
 
     public function store() 
     {
-        View::render('dashboard/createuser');
+        if(Session::has('admin')) {
+            View::render('dashboard/createuser');
+        }else {
+            Request::to('/');
+        }
     }
 
     public function create() 
     {
         $user = new User;
-        $user->create(Request::oll());
+        $data = Request::oll();
+        $data['senha'] = password_hash($data['senha'], PASSWORD_DEFAULT);
+        $user->create($data);
         Request::to('/users');
     }
 
     public function delete(int $id) 
     {
-        $user = new User;
-        $user->delete('id', $id);
-        Request::to('/users');
+        if(Session::has('admin')) {
+            $user = new User;
+            $user->delete('id', $id);
+            Request::to('/users');
+        }else {
+            Request::to('/');
+        }
+
     }
 }

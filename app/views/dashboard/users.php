@@ -7,7 +7,11 @@
 </div>
 
 <section class="list--content">
-    <?php if(count($users) > 0): ?>
+    <?php
+
+use app\helpers\Session;
+
+if(count($users) > 0): ?>
         <table class="table">
             <thead>
                 <tr>
@@ -26,9 +30,11 @@
                             <?= $user->email ?>
                         </td>
                         <td>
-                            <a href="/user/delete/<?= $user->id ?>" title="Apagar">
+                            <?php if(!($user->id == Session::get('admin')['id'])): ?>
+                                <a href="/user/delete/<?= $user->id ?>" title="Apagar">
                                 <i class="fa fa-delete-left"></i>
-                            </a>
+                                </a>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

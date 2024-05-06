@@ -96,16 +96,20 @@ class ConsultController
 
     public function show() 
     {
-        $marcacao = new Marcacao;
-        $marcacao = $marcacao->fetchAll();
+        if(Session::has('admin')) {
+            $marcacao = new Marcacao;
+            $marcacao = $marcacao->fetchAll();
 
-        $paciente = new Paciente;
-        $paciente = $paciente->fetchAll();
+            $paciente = new Paciente;
+            $paciente = $paciente->fetchAll();
 
-        View::render('dashboard/consultlist', [
-            'marcacoes' => $marcacao,
-            'paciente' => $paciente
-        ]);
+            View::render('dashboard/consultlist', [
+                'marcacoes' => $marcacao,
+                'paciente' => $paciente
+            ]);
+        }else {
+            Request::to('/');
+        }
     }
 
     public function delete(int $id) 
