@@ -9,9 +9,7 @@
     <div class="face--content wrapper">
         <div class="face--left">
             <h2>
-                Your Path to Health and Healing 
-                Begins Here: Excellence in Care,
-                Compassion in Service.
+                Clínica Girassol a sua saúde e bem estar é a nossa prioridade!
             </h2>
 
             <p>
@@ -105,7 +103,7 @@
             </div>
         <?php endif; ?>
     <?php endif; ?>
-    
+
     <h2 class="clientes__title">Oque nossos pacientes dizem?</h2>
     <div class="clientes--content">
         <?php if(count($feedbacks) > 0): ?>
