@@ -22,19 +22,23 @@
             <div class="form--filds">
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" name="nome" id="nome" />
+                    <input type="text" name="nome" id="nome" required />
                 </div>
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
-                    <textarea name="endereco" id="endereco" cols="30" ></textarea>
+                    <textarea name="endereco" id="endereco" cols="30" required ></textarea>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" />
+                    <input type="email" name="email" id="email" required />
                 </div>
                 <div class="form-group">
                     <label for="datamarcacao">Data da Consulta</label>
-                    <input type="datetime-local" name="datamarcacao" id="datamarcacao" />
+                    <input type="date" name="datamarcacao" id="datamarcacao"         required />
+                </div>
+                <div class="form-group">
+                    <label for="time">Hora da Consulta</label>
+                    <input type="time" name="time" id="time" required />
                 </div>
                 <div class="form-group">
                     <label for="sexo">Sexo</label>
@@ -52,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <label for="datanascimento">Data de nascimento</label>
-                    <input type="date" name="datanascimento" id="datanascimento" />
+                    <input type="date" name="datanascimento" id="datanascimento" required />
                 </div>
                 <div class="form-group">
                     <label for="tipoconsulta">Consulta ou exame</label>
@@ -68,7 +72,7 @@
                 </div>
                 <div class="form-group">
                     <label for="telefone">Nº Telefone</label>
-                    <input type="number" name="telefone" id="telefone" />
+                    <input type="number" name="telefone" id="telefone" required />
                 </div>
                 <div class="form-btns">
                     <button type="submit" class="btn btn-see">Cadastrar</button>

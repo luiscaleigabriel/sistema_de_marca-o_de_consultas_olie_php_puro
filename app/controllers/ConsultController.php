@@ -43,7 +43,7 @@ class ConsultController
         $idpaciente = $paciente->id;
 
         $dadosDaMarcacao = [
-            'datamarcacao' => Request::input('datamarcacao'),
+            'datamarcacao' => Request::input('datamarcacao') .' '. Request::input('time'),
             'atoclinico' => Request::input('ato'),
             'tipoconsulta' => Request::input('tipoconsulta'),
             'idpaciente' => $idpaciente,

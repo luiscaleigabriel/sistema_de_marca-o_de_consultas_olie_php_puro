@@ -7,10 +7,10 @@
                 <a onclick="openClose()" href="/">Home</a>
             </li>
             <li class="menu__item">
-                <a onclick="openClose()" href="#about">Sobre-nós</a>
+                <a onclick="openClose()" href="/#about">Sobre-nós</a>
             </li>
             <li class="menu__item">
-                <a onclick="openClose()" href="#services">Especialistas</a>
+                <a onclick="openClose()" href="/#services">Especialistas</a>
             </li>
             <li class="menu__item">
                 <a onclick="openClose()" href="/contact">Contacto</a>
