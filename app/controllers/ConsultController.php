@@ -4,11 +4,9 @@ namespace app\controllers;
 
 use app\database\models\Marcacao;
 use app\database\models\Paciente;
-use app\helpers\Email;
 use app\helpers\Request;
 use app\helpers\Session;
 use app\helpers\View;
-use Exception;
 
 class ConsultController 
 {
@@ -56,38 +54,11 @@ class ConsultController
         $createdM = $marcação->create($dadosDaMarcacao);
 
         if($createdP && $createdM) {
-            try {
-                $data = [
-                    'nome' => Request::input('nome'),
-                    'datamarcacao' => Request::input('datamarcacao')
-                ];
-                $email = new Email;
-                $send = $email->from('clinicagirassol@gmail.com', 'Clínica Girrassol')
-                ->to($dadosDoPaciente['email'], $dadosDoPaciente['nome'])
-                ->message('')
-                ->template('email',[
-                    'name' => $data['nome'],
-                    'date' => $data['datamarcacao']
-                ])
-                ->subject('')
-                ->send();
-                if($send) {
-                    Session::flash('success', 'Consulta marcada com sucesso! Verifique o seu email! Obrigado!');
-                }else {
-                    Session::flash('error', 'Ocorreu um erro verifique a sua conexão a internet! ou tente mais tarde');
-
-                    $pacienteT->delete('email', $dadosDoPaciente['email']);
-                    $marcação->delete('idpaciente', $idpaciente);
-                }
-            } catch (Exception $e) {
-                Session::flash('error', 'Ocorreu um erro verifique a sua conexão a internet! ou tente mais tarde');
-                
-                $pacienteT->delete('email', $dadosDoPaciente['email']);
-                $marcação->delete('idpaciente', $idpaciente);
-            }
-            
+            Session::flash('success', 'Consulta marcada com sucesso! Enviamos lhe um email de confirmação. Verifique o seu correio electrônico! Obrigado!');
         }else {
             Session::flash('error', 'Ocorreu um erro verifique a sua conexão a internet! ou tente mais tarde');
+            $pacienteT->delete('email', $dadosDoPaciente['email']);
+            $marcação->delete('idpaciente', $idpaciente);
         }
 
         Request::to('/consult');
